@@ -2,11 +2,19 @@ package com.tp2.roman;
 
 public class RomanNumerals {
     
+    private static final int[] VALUES = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private static final String[] SYMBOLS = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    
     public String convert(int number) {
-        // TODO: Implement roman numeral conversion following TDD approach
-        // Start with basic numbers: 1=I, 5=V, 10=X
-        // Then handle subtraction cases: 4=IV, 9=IX
-        // Build up to complex numbers like 1994=MCMXCIV
-        return "";
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = 0; i < VALUES.length; i++) {
+            while (number >= VALUES[i]) {
+                result.append(SYMBOLS[i]);
+                number -= VALUES[i];
+            }
+        }
+        
+        return result.toString();
     }
 }
